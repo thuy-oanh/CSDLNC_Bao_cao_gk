@@ -113,12 +113,17 @@ step('shard resource_chunks', () => sh.shardCollection('eduhub.resource_chunks',
 step('shard access_logs',     () => sh.shardCollection('eduhub.access_logs',     { khoaId: 1 }));
 
 // =====================================================
-// 5. ZONE KEY RANGE (Giu dung thiet ke goc tu tai lieu nhom)
+// 5. ZONE KEY RANGE
+// Moi zone la khoang [K_i, K_(i+1)) tinh den MinKey cua courseId/resourceId/n,
+// de KHONG con chunk dem {Ki, MaxKey} nam o rsA lam truy van khoaId:'K2' bi gui them toi rsA.
 // =====================================================
-const MIN = MinKey(), MAX = MaxKey();
+const MIN = MinKey();
+const NEXT = { K1: 'K2', K2: 'K3' };
 for (const k of ['K1', 'K2']) {
-  step('zone resources ' + k,       () => sh.updateZoneKeyRange('eduhub.resources',       { khoaId: k, courseId: MIN }, { khoaId: k, courseId: MAX }, k));
-  step('zone resource_chunks ' + k, () => sh.updateZoneKeyRange('eduhub.resource_chunks', { khoaId: k, resourceId: MIN, n: MIN }, { khoaId: k, resourceId: MAX, n: MAX }, k));
+  step('zone resources ' + k, () => sh.updateZoneKeyRange('eduhub.resources',
+    { khoaId: k, courseId: MIN }, { khoaId: NEXT[k], courseId: MIN }, k));
+  step('zone resource_chunks ' + k, () => sh.updateZoneKeyRange('eduhub.resource_chunks',
+    { khoaId: k, resourceId: MIN, n: MIN }, { khoaId: NEXT[k], resourceId: MIN, n: MIN }, k));
 }
 step('zone nguoidung K1',   () => sh.updateZoneKeyRange('eduhub.nguoidung',   { khoaId: 'K1' }, { khoaId: 'K2' }, 'K1'));
 step('zone nguoidung K2',   () => sh.updateZoneKeyRange('eduhub.nguoidung',   { khoaId: 'K2' }, { khoaId: 'K3' }, 'K2'));

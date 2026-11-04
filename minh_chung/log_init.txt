@@ -1,0 +1,65 @@
+[init] cfg da san sang.
+[init] siteA da san sang.
+[init] siteB da san sang.
+[init] Kiem tra replica set rsCfg...
+[init] Dang initiate rsCfg...
+{
+  ok: 1
+}
+[init] Kiem tra replica set rsA...
+[init] Dang initiate rsA...
+{
+  ok: 1
+}
+[init] Kiem tra replica set rsB...
+[init] Dang initiate rsB...
+{
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1793798683, i: 1 }),
+    signature: {
+      hash: Binary.createFromBase64('AAAAAAAAAAAAAAAAAAAAAAAAAAA=', 0),
+      keyId: Long('0')
+    }
+  },
+  operationTime: Timestamp({ t: 1793798683, i: 1 })
+}
+[init] cfg da la PRIMARY.
+[init] siteA da la PRIMARY.
+[init] siteB da la PRIMARY.
+[init] mongos da san sang.
+[init] === Cau hinh cluster + zone ===
+[OK]   addShard rsA
+[OK]   addShard rsB
+[OK]   zone K1 -> rsA
+[OK]   zone K2 -> rsB
+[OK]   enableSharding eduhub (primary rsA)
+[OK]   collection khoa
+[OK]   collection monhoc
+[OK]   collection nguoidung
+[OK]   collection resources
+[OK]   collection resource_chunks
+[OK]   collection access_logs
+[OK]   shard resources
+[OK]   shard nguoidung
+[OK]   shard resource_chunks
+[OK]   shard access_logs
+[OK]   zone resources K1
+[OK]   zone resource_chunks K1
+[OK]   zone resources K2
+[OK]   zone resource_chunks K2
+[OK]   zone nguoidung K1
+[OK]   zone nguoidung K2
+[OK]   zone access_logs K1
+[OK]   zone access_logs K2
+[OK]   unique email nguoidung
+[OK]   Tat ca chunk da nam dung zone (K1->rsA, K2->rsB)
+Balancer state: true
+[DONE] 01_cluster.js hoan tat khong loi.
+[init] === Nap khoa / monhoc / nguoidung ===
+khoa=2 monhoc=3 nguoidung=7
+[init] =================================
+[init] KHOI TAO HOAN TAT.
+[init] Ket noi: mongodb://localhost:27017
+[init] Database: eduhub
+[init] =================================

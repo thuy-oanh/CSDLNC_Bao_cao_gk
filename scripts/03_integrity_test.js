@@ -1,5 +1,7 @@
 // 03_integrity_test.js - kich ban 5 (toan ven) + 6 (zone).
-// Chay tren may host:  docker compose exec -T mongos mongosh --quiet < scripts/03_integrity_test.js | tee log_toan_ven.txt
+// Chay (Git Bash):  MSYS_NO_PATHCONV=1 docker cp scripts/03_integrity_test.js eduhub-mongos:/tmp/t.js
+//                   MSYS_NO_PATHCONV=1 docker compose exec -T mongos mongosh --quiet /tmp/t.js | tee log_toan_ven.txt
+// (hoac chay collect_evidence.sh de lam tat ca)
 const E = db.getSiblingDB('eduhub');
 const mk = (id, khoa, over = {}) => Object.assign({
   _id: id, khoaId: khoa, courseId: 'CSDLNC', type: 'lecture', title: 'Test', description: 'Test', caption: 'Test',
@@ -8,9 +10,11 @@ const mk = (id, khoa, over = {}) => Object.assign({
           checksum: { algorithm: 'sha256', value: 'a'.repeat(64) }, data: BinData(0, 'SGVsbG8=') },
   status: 'ready', createdAt: new Date() }, over);
 
+let nPass = 0, nFail = 0;
 function expect(label, coll, doc, shouldPass) {
   let ok, msg = '';
   try { coll.insertOne(doc); ok = true; } catch (e) { ok = false; msg = (e.code || '') + ' ' + e.message.split('\n')[0]; }
+  if (ok === shouldPass) nPass++; else nFail++;
   print((ok === shouldPass ? 'PASS ' : 'FAIL ') + '| ' + label + ' | ' + (ok ? 'da chen' : 'bi chan: ' + msg));
 }
 const ids = ['K1_HL_999001', 'K2_HL_999002'];
@@ -20,9 +24,12 @@ print('--- Kich ban 6: zone ---');
 expect('chen hoc lieu K1', E.resources, mk('K1_HL_999001', 'K1'), true);
 expect('chen hoc lieu K2', E.resources, mk('K2_HL_999002', 'K2'), true);
 ids.forEach(id => {
-  const k = id.substring(0, 2);
-  const sh = E.resources.find({ khoaId: k, _id: id }).explain('queryPlanner').queryPlanner.winningPlan.shards.map(s => s.shardName);
-  print('  ' + id + ' nam o shard: ' + JSON.stringify(sh) + '  (ky vong ' + (k === 'K1' ? 'rsA' : 'rsB') + ')');
+  const k = id.substring(0, 2), want = (k === 'K1') ? 'rsA' : 'rsB';
+  const got = E.resources.find({ khoaId: k, _id: id }).explain('queryPlanner')
+                .queryPlanner.winningPlan.shards.map(s => s.shardName);
+  const ok = got.length === 1 && got[0] === want;
+  if (ok) nPass++; else nFail++;
+  print((ok ? 'PASS ' : 'FAIL ') + '| ' + id + ' -> shard ' + JSON.stringify(got) + ' (ky vong ["' + want + '"], truy van targeted 1 shard)');
 });
 
 print('--- Kich ban 5: toan ven ---');
@@ -37,3 +44,4 @@ print('(courseId khong ton tai trong monhoc: kiem tra o tang ung dung - MongoDB 
 
 E.resources.deleteMany({ _id: { $in: ids } });
 print('Da don du lieu test.');
+print('=== TONG KET: ' + nPass + ' PASS, ' + nFail + ' FAIL ===');

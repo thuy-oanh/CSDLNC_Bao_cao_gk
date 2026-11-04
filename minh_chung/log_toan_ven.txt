@@ -1,0 +1,16 @@
+--- Kich ban 6: zone ---
+PASS | chen hoc lieu K1 | da chen
+PASS | chen hoc lieu K2 | da chen
+PASS | K1_HL_999001 -> shard ["rsA"] (ky vong ["rsA"], truy van targeted 1 shard)
+PASS | K2_HL_999002 -> shard ["rsB"] (ky vong ["rsB"], truy van targeted 1 shard)
+--- Kich ban 5: toan ven ---
+PASS | trung _id | bi chan: 11000 E11000 duplicate key error collection: eduhub.resources index: _id_ dup key: { _id: "K1_HL_999001" }
+PASS | khoaId sai tien to (_id K1, khoaId K2) | bi chan: 121 Document failed validation
+PASS | size <= 0 | bi chan: 121 Document failed validation
+PASS | type khong hop le | bi chan: 121 Document failed validation
+PASS | checksum khong phai sha256 hex 64 | bi chan: 121 Document failed validation
+PASS | nguoidung vaiTro sai | bi chan: 121 Document failed validation
+PASS | nguoidung trung email | bi chan: 11000 E11000 duplicate key error collection: eduhub.nguoidung index: idx_email_unique dup key: { khoaId: "K1", email: "nguyenvana@example.com" }
+(courseId khong ton tai trong monhoc: kiem tra o tang ung dung - MongoDB khong co FK)
+Da don du lieu test.
+=== TONG KET: 11 PASS, 0 FAIL ===
