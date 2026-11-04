@@ -1,0 +1,47 @@
+# EduHub - Sharded Cluster demo (TV1)
+# Topology: 1 config server, 2 shard (Site A = K1, Site B = K2), 1 mongos
+# Moi replica set demo dung 1 node (rs.initiate do container "init" lam).
+# Ten service siteA / siteB khop voi script trong file Thong nhat: sh.addShard("rsA/siteA:27017")
+# LUU Y: --shardsvr / --configsvr mac dinh la cong 27018 / 27019 => ep --port 27017 de dong nhat.
+services:
+  cfg:
+    image: mongo:7.0
+    container_name: eduhub-cfg
+    command: mongod --configsvr --replSet rsCfg --port 27017 --bind_ip_all
+    volumes: [cfg_data:/data/configdb]
+
+  siteA:
+    image: mongo:7.0
+    container_name: eduhub-siteA
+    command: mongod --shardsvr --replSet rsA --port 27017 --bind_ip_all
+    volumes: [siteA_data:/data/db]
+
+  siteB:
+    image: mongo:7.0
+    container_name: eduhub-siteB
+    command: mongod --shardsvr --replSet rsB --port 27017 --bind_ip_all
+    volumes: [siteB_data:/data/db]
+
+  mongos:
+    image: mongo:7.0
+    container_name: eduhub-mongos
+    command: mongos --configdb rsCfg/cfg:27017 --port 27017 --bind_ip_all
+    depends_on: [cfg, siteA, siteB]
+    restart: on-failure          # mongos co the thoat neu config server chua initiate xong
+    ports:
+      - "27017:27017"            # DIEM KET NOI DUY NHAT cho Python: mongodb://localhost:27017
+
+  init:                          # chay 1 lan: initiate replica set -> cau hinh shard/zone -> nap danh muc
+    image: mongo:7.0
+    container_name: eduhub-init
+    depends_on: [cfg, siteA, siteB, mongos]
+    restart: "no"
+    volumes:
+      - ./init:/init:ro
+      - ./scripts:/scripts:ro
+    entrypoint: ["bash", "/init/init.sh"]
+
+volumes:
+  cfg_data:
+  siteA_data:
+  siteB_data:
