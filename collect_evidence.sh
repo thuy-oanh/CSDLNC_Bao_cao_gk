@@ -24,7 +24,7 @@ docker compose exec -T mongos mongosh --quiet eduhub --eval \
  > "$D/targeted_K2.txt" 2>&1
 
 echo; echo "=== Kiem tra nhanh ==="
-grep -c "WARN" "$D/log_init.txt" | sed 's/^/So dong WARN trong log_init (ky vong 0): /'
+echo "So dong WARN trong log_init (ky vong 0): $(grep '\[WARN\]' "$D/log_init.txt" | grep -v 'Chua xong' | wc -l)"
 grep "TONG KET" "$D/log_toan_ven.txt"
 echo "Truy van khoaId=K2 toi shard (ky vong [\"rsB\"]): $(cat "$D/targeted_K2.txt")"
 echo "Xong. Log nam trong thu muc $D/"

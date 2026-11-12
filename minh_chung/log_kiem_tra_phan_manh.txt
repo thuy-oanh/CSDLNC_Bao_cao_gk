@@ -1,6 +1,6 @@
 ===== 1. sh.status() =====
 shardingVersion
-{ _id: 1, clusterId: ObjectId('6aeb32193aace51b520c2174') }
+{ _id: 1, clusterId: ObjectId('6aec60b6c608ec4ce59654e1') }
 ---
 shards
 [
@@ -8,14 +8,14 @@ shards
     _id: 'rsA',
     host: 'rsA/siteA:27017',
     state: 1,
-    topologyTime: Timestamp({ t: 1793798686, i: 2 }),
+    topologyTime: Timestamp({ t: 1793876155, i: 2 }),
     tags: [ 'K1' ]
   },
   {
     _id: 'rsB',
     host: 'rsB/siteB:27017',
     state: 1,
-    topologyTime: Timestamp({ t: 1793798686, i: 6 }),
+    topologyTime: Timestamp({ t: 1793876155, i: 6 }),
     tags: [ 'K2' ]
   }
 ]
@@ -29,8 +29,8 @@ autosplit
 balancer
 {
   'Currently enabled': 'yes',
-  'Failed balancer rounds in last 5 attempts': 0,
   'Currently running': 'no',
+  'Failed balancer rounds in last 5 attempts': 0,
   'Migration Results for the last 24 hours': { '4': 'Success' }
 }
 ---
@@ -56,6 +56,25 @@ shardedDataDistribution
     ]
   },
   {
+    ns: 'eduhub.resources',
+    shards: [
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      },
+      {
+        shardName: 'rsB',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      }
+    ]
+  },
+  {
     ns: 'eduhub.resource_chunks',
     shards: [
       {
@@ -75,20 +94,13 @@ shardedDataDistribution
     ]
   },
   {
-    ns: 'eduhub.resources',
+    ns: 'config.system.sessions',
     shards: [
       {
         shardName: 'rsA',
         numOrphanedDocs: 0,
-        numOwnedDocuments: 0,
-        ownedSizeBytes: 0,
-        orphanedSizeBytes: 0
-      },
-      {
-        shardName: 'rsB',
-        numOrphanedDocs: 0,
-        numOwnedDocuments: 0,
-        ownedSizeBytes: 0,
+        numOwnedDocuments: 105,
+        ownedSizeBytes: 10395,
         orphanedSizeBytes: 0
       }
     ]
@@ -118,7 +130,19 @@ databases
 [
   {
     database: { _id: 'config', primary: 'config', partitioned: true },
-    collections: {}
+    collections: {
+      'config.system.sessions': {
+        shardKey: { _id: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 1 } ],
+        chunks: [
+          { min: { _id: MinKey() }, max: { _id: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 0 }) }
+        ],
+        tags: []
+      }
+    }
   },
   {
     database: {
@@ -126,8 +150,8 @@ databases
       primary: 'rsA',
       partitioned: false,
       version: {
-        uuid: UUID('e6bf726f-4ceb-4fa3-9040-abbce88843eb'),
-        timestamp: Timestamp({ t: 1793798687, i: 2 }),
+        uuid: UUID('e7dfe9b1-ed84-409f-874f-c6f411ca990e'),
+        timestamp: Timestamp({ t: 1793876156, i: 9 }),
         lastMod: 1
       }
     },
@@ -247,6 +271,15 @@ Totals
   'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
 }
 ===== 2. getShardDistribution: resource_chunks =====
+Shard rsB at rsB/siteB:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 1,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
 Shard rsA at rsA/siteA:27017
 {
   data: '0B',
@@ -256,33 +289,15 @@ Shard rsA at rsA/siteA:27017
   'estimated docs per chunk': 0
 }
 ---
-Shard rsB at rsB/siteB:27017
-{
-  data: '0B',
-  docs: 0,
-  chunks: 1,
-  'estimated data per chunk': '0B',
-  'estimated docs per chunk': 0
-}
----
 Totals
 {
   data: '0B',
   docs: 0,
   chunks: 4,
-  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
-  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
+  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
+  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
 }
 ===== 2. getShardDistribution: nguoidung =====
-Shard rsB at rsB/siteB:27017
-{
-  data: '453B',
-  docs: 4,
-  chunks: 1,
-  'estimated data per chunk': '453B',
-  'estimated docs per chunk': 4
-}
----
 Shard rsA at rsA/siteA:27017
 {
   data: '341B',
@@ -292,32 +307,32 @@ Shard rsA at rsA/siteA:27017
   'estimated docs per chunk': 1
 }
 ---
+Shard rsB at rsB/siteB:27017
+{
+  data: '453B',
+  docs: 4,
+  chunks: 1,
+  'estimated data per chunk': '453B',
+  'estimated docs per chunk': 4
+}
+---
 Totals
 {
   data: '794B',
   docs: 7,
   chunks: 4,
-  'Shard rsB': [
-    '57.05 % data',
-    '57.14 % docs in cluster',
-    '113B avg obj size on shard'
-  ],
   'Shard rsA': [
     '42.94 % data',
     '42.85 % docs in cluster',
     '113B avg obj size on shard'
+  ],
+  'Shard rsB': [
+    '57.05 % data',
+    '57.14 % docs in cluster',
+    '113B avg obj size on shard'
   ]
 }
 ===== 2. getShardDistribution: access_logs =====
-Shard rsA at rsA/siteA:27017
-{
-  data: '0B',
-  docs: 0,
-  chunks: 3,
-  'estimated data per chunk': '0B',
-  'estimated docs per chunk': 0
-}
----
 Shard rsB at rsB/siteB:27017
 {
   data: '0B',
@@ -327,13 +342,22 @@ Shard rsB at rsB/siteB:27017
   'estimated docs per chunk': 0
 }
 ---
+Shard rsA at rsA/siteA:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 3,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
 Totals
 {
   data: '0B',
   docs: 0,
   chunks: 4,
-  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
-  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
+  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
+  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
 }
 ===== 3. Dieu kien TAI TAO: count qua mongos = tong hai shard =====
 resources: mongos=0 | ShardA=0 | ShardB=0 | tong=0
@@ -347,7 +371,9 @@ resource_chunks: 0
 access_logs: 0
 ===== 5. Dieu kien TACH BIET: _id trung giua hai shard (ky vong rong) =====
 resources: trung = [ ]
+resource_chunks: trung = [ ]
 nguoidung: trung = []
 ===== 6. K1 chi o ShardA, K2 chi o ShardB =====
 resources  ShardA co K2? 0  | ShardB co K1? 0  (ky vong 0 va 0)
+resource_chunks  ShardA co K2? 0  | ShardB co K1? 0  (ky vong 0 va 0)
 nguoidung  ShardA co K2? 0  | ShardB co K1? 0  (ky vong 0 va 0)

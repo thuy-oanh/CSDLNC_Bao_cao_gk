@@ -1,0 +1,6 @@
+# verify_file 2026-11-06 01:04:03
+== A. Doi soat toan bo hoc lieu that ==
+KHOP                 | K2_HL_000001 | embedded | Slide_Bai_Giang.pptx
+KHOP                 | K2_HL_000002 | embedded | Slide_Bai_Giang_KNTU.pdf
+KHOP                 | K2_HL_000003 | embedded | Slide_Bai_Giang.zip
+(bo qua phan B: can it nhat 1 hoc lieu chunked va khong dung --k2-only)

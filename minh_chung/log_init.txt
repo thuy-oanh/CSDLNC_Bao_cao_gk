@@ -9,20 +9,20 @@
 [init] Kiem tra replica set rsA...
 [init] Dang initiate rsA...
 {
-  ok: 1
-}
-[init] Kiem tra replica set rsB...
-[init] Dang initiate rsB...
-{
   ok: 1,
   '$clusterTime': {
-    clusterTime: Timestamp({ t: 1793798683, i: 1 }),
+    clusterTime: Timestamp({ t: 1793876151, i: 1 }),
     signature: {
       hash: Binary.createFromBase64('AAAAAAAAAAAAAAAAAAAAAAAAAAA=', 0),
       keyId: Long('0')
     }
   },
-  operationTime: Timestamp({ t: 1793798683, i: 1 })
+  operationTime: Timestamp({ t: 1793876151, i: 1 })
+}
+[init] Kiem tra replica set rsB...
+[init] Dang initiate rsB...
+{
+  ok: 1
 }
 [init] cfg da la PRIMARY.
 [init] siteA da la PRIMARY.
@@ -57,7 +57,7 @@
 Balancer state: true
 [DONE] 01_cluster.js hoan tat khong loi.
 [init] === Nap khoa / monhoc / nguoidung ===
-khoa=2 monhoc=3 nguoidung=7
+khoa=2 monhoc=2 nguoidung=7
 [init] =================================
 [init] KHOI TAO HOAN TAT.
 [init] Ket noi: mongodb://localhost:27017

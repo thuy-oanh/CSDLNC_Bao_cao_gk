@@ -1,16 +1,29 @@
---- Kich ban 6: zone ---
-PASS | chen hoc lieu K1 | da chen
-PASS | chen hoc lieu K2 | da chen
-PASS | K1_HL_999001 -> shard ["rsA"] (ky vong ["rsA"], truy van targeted 1 shard)
-PASS | K2_HL_999002 -> shard ["rsB"] (ky vong ["rsB"], truy van targeted 1 shard)
+--- Tien dieu kien cho dataset ---
+PASS | monhoc co courseId Physics | pipeline TV2 lay courseId tu ten thu muc
+PASS | monhoc co courseId KNTU | pipeline TV2 lay courseId tu ten thu muc
+PASS | nguoidung co tac gia K1_GV_000007 | dung trong manifest.json
+PASS | nguoidung co tac gia K2_GV_000003 | dung trong manifest.json
+--- Kich ban 6: zone + phan manh dan xuat ---
+PASS | chen hoc lieu K1 (Physics) | da chen
+PASS | chen hoc lieu K2 (KNTU) | da chen
+PASS | chen chunk K1 cua hoc lieu K1 | da chen
+PASS | chen chunk K2 cua hoc lieu K2 | da chen
+PASS | resources K1_HL_999001 | shard ["rsA"] (ky vong ["rsA"], targeted 1 shard)
+PASS | resources K2_HL_999002 | shard ["rsB"] (ky vong ["rsB"], targeted 1 shard)
+PASS | resource_chunks cua K1 nam cung Site A voi hoc lieu cha | shard ["rsA"] (ky vong ["rsA"], targeted 1 shard)
+PASS | resource_chunks cua K2 nam cung Site B voi hoc lieu cha | shard ["rsB"] (ky vong ["rsB"], targeted 1 shard)
 --- Kich ban 5: toan ven ---
 PASS | trung _id | bi chan: 11000 E11000 duplicate key error collection: eduhub.resources index: _id_ dup key: { _id: "K1_HL_999001" }
 PASS | khoaId sai tien to (_id K1, khoaId K2) | bi chan: 121 Document failed validation
 PASS | size <= 0 | bi chan: 121 Document failed validation
-PASS | type khong hop le | bi chan: 121 Document failed validation
+PASS | type khong hop le (pdf) | bi chan: 121 Document failed validation
 PASS | checksum khong phai sha256 hex 64 | bi chan: 121 Document failed validation
+PASS | content.text > 200 KB (van ban trich xuat) | bi chan: 121 Document failed validation
+PASS | tags khong phai mang | bi chan: 121 Document failed validation
+PASS | chunk sai tien to (_id K1, khoaId K2) | bi chan: 121 Document failed validation
 PASS | nguoidung vaiTro sai | bi chan: 121 Document failed validation
 PASS | nguoidung trung email | bi chan: 11000 E11000 duplicate key error collection: eduhub.nguoidung index: idx_email_unique dup key: { khoaId: "K1", email: "nguyenvana@example.com" }
+SKIP | trung checksum (idx_dedup): TV3 chua tao chi muc nay, pipeline TV2 van chong trung o tang ung dung
 (courseId khong ton tai trong monhoc: kiem tra o tang ung dung - MongoDB khong co FK)
 Da don du lieu test.
-=== TONG KET: 11 PASS, 0 FAIL ===
+=== TONG KET: 22 PASS, 0 FAIL ===

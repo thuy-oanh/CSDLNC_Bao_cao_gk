@@ -1,6 +1,6 @@
-NAME            IMAGE       COMMAND                  SERVICE   CREATED          STATUS                     PORTS
-eduhub-cfg      mongo:7.0   "docker-entrypoint.s…"   cfg       29 seconds ago   Up 27 seconds              27017/tcp
-eduhub-init     mongo:7.0   "bash /init/init.sh"     init      28 seconds ago   Exited (0) 6 seconds ago   
-eduhub-mongos   mongo:7.0   "docker-entrypoint.s…"   mongos    29 seconds ago   Up 27 seconds              0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp
-eduhub-siteA    mongo:7.0   "docker-entrypoint.s…"   siteA     29 seconds ago   Up 27 seconds              27017/tcp
-eduhub-siteB    mongo:7.0   "docker-entrypoint.s…"   siteB     29 seconds ago   Up 28 seconds              27017/tcp
+NAME            IMAGE       COMMAND                  SERVICE   CREATED         STATUS                     PORTS
+eduhub-cfg      mongo:7.0   "docker-entrypoint.s…"   cfg       7 minutes ago   Up 7 minutes               27017/tcp
+eduhub-init     mongo:7.0   "bash /init/init.sh"     init      7 minutes ago   Exited (0) 6 minutes ago   
+eduhub-mongos   mongo:7.0   "docker-entrypoint.s…"   mongos    7 minutes ago   Up 7 minutes               0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp
+eduhub-siteA    mongo:7.0   "docker-entrypoint.s…"   siteA     7 minutes ago   Up 7 minutes               27017/tcp
+eduhub-siteB    mongo:7.0   "docker-entrypoint.s…"   siteB     7 minutes ago   Up 7 minutes               27017/tcp

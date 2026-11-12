@@ -1,0 +1,9 @@
+# Log nap hoc lieu 2026-11-06 00:56:49  URI=mongodb://localhost:27017 DB=eduhub
+ket_qua | ma_hoc_lieu | khoa/mon | tep | kich_thuoc | kieu_luu | doi_soat_sha256 | ghi_chu
+OK | K1_HL_000001 | K1/Physics | K1/Physics/Classical_Mechanics_Gravity.mp4 | 41091720 | chunked | KHOP | 
+OK | K1_HL_000002 | K1/Physics | K1/Physics/Classical_Mechanics_Gravity_img.png | 619740 | embedded | KHOP | 
+OK | K1_HL_000003 | K1/Physics | K1/Physics/Classical_Mechanics_ProblemSet.pdf | 392561 | embedded | KHOP | 
+OK | K2_HL_000001 | K2/KNTU | K2/KNTU/Slide_Bai_Giang.pptx | 5447420 | embedded | KHOP | 
+OK | K2_HL_000002 | K2/KNTU | K2/KNTU/Slide_Bai_Giang_KNTU.pdf | 3381012 | embedded | KHOP | 
+OK | K2_HL_000003 | K2/KNTU | K2/KNTU/Slide_Bai_Giang.zip | 5271810 | embedded | KHOP | 
+# Tong ket: 6 OK, 0 trung, 0 loi

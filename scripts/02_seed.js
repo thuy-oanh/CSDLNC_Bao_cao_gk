@@ -3,9 +3,9 @@ const E = db.getSiblingDB('eduhub');
 
 const khoa = [{ _id: 'K1', tenKhoa: 'Khoa 1' }, { _id: 'K2', tenKhoa: 'Khoa 2' }];   // thay bang ten khoa thuc te, GIU ma K1/K2
 const monhoc = [
-  { _id: 'CSDLNC', tenMon: 'Cơ sở dữ liệu nâng cao', soTinChi: 3 },
-  { _id: 'LTHDT',  tenMon: 'Lập trình hướng đối tượng', soTinChi: 3 },     // soTinChi: chinh lai theo thuc te
-  { _id: 'CTDLGT', tenMon: 'Cấu trúc dữ liệu và giải thuật', soTinChi: 3 }
+  // courseId = ten thu muc cap 2 trong dataset/<khoa>/<mon>/ (chi gom cac mon co du lieu that)
+  { _id: 'Physics', tenMon: 'Vật lý - Cơ học cổ điển (MIT 8.01)', soTinChi: 3 },   // K1
+  { _id: 'KNTU', tenMon: 'Kỹ năng thích ứng', soTinChi: 3 },
 ];
 const nguoidung = [
   { _id: 'K1_QT_000001', hoTen: 'Quản trị K1',     email: 'qt.k1@example.com',  vaiTro: 'QT', khoaId: 'K1' },

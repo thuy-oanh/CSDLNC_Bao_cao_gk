@@ -21,13 +21,13 @@ for c in resources nguoidung resource_chunks access_logs; do
 done
 
 echo "===== 5. Dieu kien TACH BIET: _id trung giua hai shard (ky vong rong) ====="
-for c in resources nguoidung; do
+for c in resources resource_chunks nguoidung; do
   $A "db.$c.find({},{_id:1}).toArray().map(d=>d._id).join('\n')" | sort > /tmp/ids_a.txt
   $B "db.$c.find({},{_id:1}).toArray().map(d=>d._id).join('\n')" | sort > /tmp/ids_b.txt
   echo "$c: trung = [$(comm -12 /tmp/ids_a.txt /tmp/ids_b.txt | tr '\n' ' ')]"
 done
 
 echo "===== 6. K1 chi o ShardA, K2 chi o ShardB ====="
-for c in resources nguoidung; do
+for c in resources resource_chunks nguoidung; do
   echo "$c  ShardA co K2? $($A "db.$c.countDocuments({khoaId:'K2'})")  | ShardB co K1? $($B "db.$c.countDocuments({khoaId:'K1'})")  (ky vong 0 va 0)"
 done

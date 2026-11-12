@@ -1,0 +1,379 @@
+===== 1. sh.status() =====
+shardingVersion
+{ _id: 1, clusterId: ObjectId('6aead735f9537abac3aceec1') }
+---
+shards
+[
+  {
+    _id: 'rsA',
+    host: 'rsA/siteA:27017',
+    state: 1,
+    topologyTime: Timestamp({ t: 1793775418, i: 2 }),
+    tags: [ 'K1' ]
+  },
+  {
+    _id: 'rsB',
+    host: 'rsB/siteB:27017',
+    state: 1,
+    topologyTime: Timestamp({ t: 1793775418, i: 6 }),
+    tags: [ 'K2' ]
+  }
+]
+---
+active mongoses
+[ { '7.0.45': 1 } ]
+---
+autosplit
+{ 'Currently enabled': 'yes' }
+---
+balancer
+{
+  'Currently enabled': 'yes',
+  'Failed balancer rounds in last 5 attempts': 0,
+  'Currently running': 'no',
+  'Migration Results for the last 24 hours': { '4': 'Success' }
+}
+---
+shardedDataDistribution
+[
+  {
+    ns: 'eduhub.resources',
+    shards: [
+      {
+        shardName: 'rsB',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      },
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      }
+    ]
+  },
+  {
+    ns: 'eduhub.access_logs',
+    shards: [
+      {
+        shardName: 'rsB',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      },
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      }
+    ]
+  },
+  {
+    ns: 'config.system.sessions',
+    shards: [
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      }
+    ]
+  },
+  {
+    ns: 'eduhub.resource_chunks',
+    shards: [
+      {
+        shardName: 'rsB',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      },
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 0,
+        ownedSizeBytes: 0,
+        orphanedSizeBytes: 0
+      }
+    ]
+  },
+  {
+    ns: 'eduhub.nguoidung',
+    shards: [
+      {
+        shardName: 'rsB',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 4,
+        ownedSizeBytes: 452,
+        orphanedSizeBytes: 0
+      },
+      {
+        shardName: 'rsA',
+        numOrphanedDocs: 0,
+        numOwnedDocuments: 3,
+        ownedSizeBytes: 339,
+        orphanedSizeBytes: 0
+      }
+    ]
+  }
+]
+---
+databases
+[
+  {
+    database: { _id: 'config', primary: 'config', partitioned: true },
+    collections: {
+      'config.system.sessions': {
+        shardKey: { _id: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 1 } ],
+        chunks: [
+          { min: { _id: MinKey() }, max: { _id: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 0 }) }
+        ],
+        tags: []
+      }
+    }
+  },
+  {
+    database: {
+      _id: 'eduhub',
+      primary: 'rsA',
+      partitioned: false,
+      version: {
+        uuid: UUID('13a05a76-75cd-462c-917a-9b1b105faaf4'),
+        timestamp: Timestamp({ t: 1793775418, i: 20 }),
+        lastMod: 1
+      }
+    },
+    collections: {
+      'eduhub.access_logs': {
+        shardKey: { khoaId: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 3 }, { shard: 'rsB', nChunks: 1 } ],
+        chunks: [
+          { min: { khoaId: MinKey() }, max: { khoaId: 'K1' }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 2, i: 1 }) },
+          { min: { khoaId: 'K1' }, max: { khoaId: 'K2' }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 2 }) },
+          { min: { khoaId: 'K2' }, max: { khoaId: 'K3' }, 'on shard': 'rsB', 'last modified': Timestamp({ t: 2, i: 0 }) },
+          { min: { khoaId: 'K3' }, max: { khoaId: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 4 }) }
+        ],
+        tags: [
+          { tag: 'K1', min: { khoaId: 'K1' }, max: { khoaId: 'K2' } },
+          { tag: 'K2', min: { khoaId: 'K2' }, max: { khoaId: 'K3' } }
+        ]
+      },
+      'eduhub.nguoidung': {
+        shardKey: { khoaId: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 3 }, { shard: 'rsB', nChunks: 1 } ],
+        chunks: [
+          { min: { khoaId: MinKey() }, max: { khoaId: 'K1' }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 2, i: 1 }) },
+          { min: { khoaId: 'K1' }, max: { khoaId: 'K2' }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 2 }) },
+          { min: { khoaId: 'K2' }, max: { khoaId: 'K3' }, 'on shard': 'rsB', 'last modified': Timestamp({ t: 2, i: 0 }) },
+          { min: { khoaId: 'K3' }, max: { khoaId: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 4 }) }
+        ],
+        tags: [
+          { tag: 'K1', min: { khoaId: 'K1' }, max: { khoaId: 'K2' } },
+          { tag: 'K2', min: { khoaId: 'K2' }, max: { khoaId: 'K3' } }
+        ]
+      },
+      'eduhub.resource_chunks': {
+        shardKey: { khoaId: 1, resourceId: 1, n: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 4 }, { shard: 'rsB', nChunks: 1 } ],
+        chunks: [
+          { min: { khoaId: MinKey(), resourceId: MinKey(), n: MinKey() }, max: { khoaId: 'K1', resourceId: MinKey(), n: MinKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 2, i: 1 }) },
+          { min: { khoaId: 'K1', resourceId: MinKey(), n: MinKey() }, max: { khoaId: 'K1', resourceId: MaxKey(), n: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 2 }) },
+          { min: { khoaId: 'K1', resourceId: MaxKey(), n: MaxKey() }, max: { khoaId: 'K2', resourceId: MinKey(), n: MinKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 3 }) },
+          { min: { khoaId: 'K2', resourceId: MinKey(), n: MinKey() }, max: { khoaId: 'K2', resourceId: MaxKey(), n: MaxKey() }, 'on shard': 'rsB', 'last modified': Timestamp({ t: 2, i: 0 }) },
+          { min: { khoaId: 'K2', resourceId: MaxKey(), n: MaxKey() }, max: { khoaId: MaxKey(), resourceId: MaxKey(), n: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 5 }) }
+        ],
+        tags: [
+          {
+            tag: 'K1',
+            min: { khoaId: 'K1', resourceId: MinKey(), n: MinKey() },
+            max: { khoaId: 'K1', resourceId: MaxKey(), n: MaxKey() }
+          },
+          {
+            tag: 'K2',
+            min: { khoaId: 'K2', resourceId: MinKey(), n: MinKey() },
+            max: { khoaId: 'K2', resourceId: MaxKey(), n: MaxKey() }
+          }
+        ]
+      },
+      'eduhub.resources': {
+        shardKey: { khoaId: 1, courseId: 1 },
+        unique: false,
+        balancing: true,
+        allowMigrations: true,
+        chunkMetadata: [ { shard: 'rsA', nChunks: 4 }, { shard: 'rsB', nChunks: 1 } ],
+        chunks: [
+          { min: { khoaId: MinKey(), courseId: MinKey() }, max: { khoaId: 'K1', courseId: MinKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 2, i: 1 }) },
+          { min: { khoaId: 'K1', courseId: MinKey() }, max: { khoaId: 'K1', courseId: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 2 }) },
+          { min: { khoaId: 'K1', courseId: MaxKey() }, max: { khoaId: 'K2', courseId: MinKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 3 }) },
+          { min: { khoaId: 'K2', courseId: MinKey() }, max: { khoaId: 'K2', courseId: MaxKey() }, 'on shard': 'rsB', 'last modified': Timestamp({ t: 2, i: 0 }) },
+          { min: { khoaId: 'K2', courseId: MaxKey() }, max: { khoaId: MaxKey(), courseId: MaxKey() }, 'on shard': 'rsA', 'last modified': Timestamp({ t: 1, i: 5 }) }
+        ],
+        tags: [
+          {
+            tag: 'K1',
+            min: { khoaId: 'K1', courseId: MinKey() },
+            max: { khoaId: 'K1', courseId: MaxKey() }
+          },
+          {
+            tag: 'K2',
+            min: { khoaId: 'K2', courseId: MinKey() },
+            max: { khoaId: 'K2', courseId: MaxKey() }
+          }
+        ]
+      }
+    }
+  }
+]
+===== 2. getShardDistribution: resources =====
+Shard rsB at rsB/siteB:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 1,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Shard rsA at rsA/siteA:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 4,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Totals
+{
+  data: '0B',
+  docs: 0,
+  chunks: 5,
+  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
+  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
+}
+===== 2. getShardDistribution: resource_chunks =====
+Shard rsA at rsA/siteA:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 4,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Shard rsB at rsB/siteB:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 1,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Totals
+{
+  data: '0B',
+  docs: 0,
+  chunks: 5,
+  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
+  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
+}
+===== 2. getShardDistribution: nguoidung =====
+Shard rsA at rsA/siteA:27017
+{
+  data: '341B',
+  docs: 3,
+  chunks: 3,
+  'estimated data per chunk': '113B',
+  'estimated docs per chunk': 1
+}
+---
+Shard rsB at rsB/siteB:27017
+{
+  data: '453B',
+  docs: 4,
+  chunks: 1,
+  'estimated data per chunk': '453B',
+  'estimated docs per chunk': 4
+}
+---
+Totals
+{
+  data: '794B',
+  docs: 7,
+  chunks: 4,
+  'Shard rsA': [
+    '42.94 % data',
+    '42.85 % docs in cluster',
+    '113B avg obj size on shard'
+  ],
+  'Shard rsB': [
+    '57.05 % data',
+    '57.14 % docs in cluster',
+    '113B avg obj size on shard'
+  ]
+}
+===== 2. getShardDistribution: access_logs =====
+Shard rsA at rsA/siteA:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 3,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Shard rsB at rsB/siteB:27017
+{
+  data: '0B',
+  docs: 0,
+  chunks: 1,
+  'estimated data per chunk': '0B',
+  'estimated docs per chunk': 0
+}
+---
+Totals
+{
+  data: '0B',
+  docs: 0,
+  chunks: 4,
+  'Shard rsA': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ],
+  'Shard rsB': [ '0 % data', '0 % docs in cluster', '0B avg obj size on shard' ]
+}
+===== 3. Dieu kien TAI TAO: count qua mongos = tong hai shard =====
+resources: mongos=0 | ShardA=0 | ShardB=0 | tong=0
+nguoidung: mongos=7 | ShardA=3 | ShardB=4 | tong=7
+resource_chunks: mongos=0 | ShardA=0 | ShardB=0 | tong=0
+access_logs: mongos=0 | ShardA=0 | ShardB=0 | tong=0
+===== 4. Dieu kien DAY DU: khoaId ngoai {K1,K2} (ky vong 0) =====
+resources: 0
+nguoidung: 0
+resource_chunks: 0
+access_logs: 0
+===== 5. Dieu kien TACH BIET: _id trung giua hai shard (ky vong rong) =====
+resources: trung = [ ]
+nguoidung: trung = []
+===== 6. K1 chi o ShardA, K2 chi o ShardB =====
+resources  ShardA co K2? 0  | ShardB co K1? 0  (ky vong 0 va 0)
+nguoidung  ShardA co K2? 0  | ShardB co K1? 0  (ky vong 0 va 0)

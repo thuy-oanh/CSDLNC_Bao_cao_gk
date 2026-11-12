@@ -1,0 +1,69 @@
+[
+  {
+    "path": "K1/Physics/Classical_Mechanics_Gravity.mp4",
+    "type": "video",
+    "title": "Cơ học cổ điển: Lực hấp dẫn (MIT 8.01 - L05)",
+    "description": "Video bài giảng về định luật vạn vật hấp dẫn của Newton, trích từ MIT OpenCourseWare 8.01SC.",
+    "caption": "Video bài giảng lực hấp dẫn",
+    "authorId": "K1_GV_000007",
+    "access": "course",
+    "language": "en",
+    "tags": ["gravity", "mechanics", "newton"],
+    "transcript": "K1/Physics/Classical_Mechanics_Gravity_transcript.srt"
+  },
+  {
+    "path": "K1/Physics/Classical_Mechanics_Gravity_img.png",
+    "type": "image",
+    "title": "Ảnh minh họa bài Lực hấp dẫn",
+    "description": "Khung hình trích từ video bài giảng Lực hấp dẫn dùng làm ảnh minh họa.",
+    "caption": "Ảnh minh họa lực hấp dẫn",
+    "authorId": "K1_GV_000007",
+    "access": "public",
+    "language": "en",
+    "tags": ["gravity", "image"]
+  },
+  {
+    "path": "K1/Physics/Classical_Mechanics_ProblemSet.pdf",
+    "type": "file",
+    "title": "Bộ bài tập Cơ học cổ điển",
+    "description": "Bộ bài tập đi kèm bài giảng Cơ học cổ điển.",
+    "caption": "Bài tập Cơ học cổ điển",
+    "authorId": "K1_GV_000007",
+    "access": "course",
+    "language": "en",
+    "tags": ["problem-set", "mechanics"]
+  },
+  {
+    "path": "K2/KNTU/Slide_Bai_Giang.pptx",
+    "type": "slide",
+    "title": "Slide bài giảng KNTU",
+    "description": "Slide bài giảng môn KNTU. (SỬA lại cho đúng nội dung)",
+    "caption": "Slide bài giảng",
+    "authorId": "K2_GV_000003",
+    "access": "course",
+    "language": "vi",
+    "tags": ["slide", "bai-giang"]
+  },
+  {
+    "path": "K2/KNTU/Slide_Bai_Giang_KNTU.pdf",
+    "type": "lecture",
+    "title": "Tài liệu bài giảng KNTU (PDF)",
+    "description": "Bản PDF của bài giảng môn KNTU. (SỬA lại cho đúng nội dung)",
+    "caption": "Bài giảng PDF",
+    "authorId": "K2_GV_000003",
+    "access": "course",
+    "language": "vi",
+    "tags": ["pdf", "bai-giang"]
+  },
+  {
+    "path": "K2/KNTU/Slide_Bai_Giang.zip",
+    "type": "file",
+    "title": "Tệp đính kèm bài giảng KNTU",
+    "description": "Gói tệp đính kèm của bài giảng môn KNTU.",
+    "caption": "Tệp đính kèm",
+    "authorId": "K2_GV_000003",
+    "access": "course",
+    "language": "vi",
+    "tags": ["attachment"]
+  }
+]

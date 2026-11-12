@@ -76,14 +76,26 @@ const validators = {
         title: { bsonType: 'string', minLength: 1 }, description: { bsonType: 'string', minLength: 1 },
         caption: { bsonType: 'string', minLength: 1 },
         status: { enum: ['uploading', 'ready', 'failed'] },
-        access: { bsonType: 'object', properties: { level: { enum: ['public', 'course', 'private'] } } },
+        access: { bsonType: 'object', properties: { level: { enum: ['public', 'course', 'private'] },
+                                                     groups: { bsonType: 'array', items: { bsonType: 'string' } } } },
         file: { bsonType: 'object', required: ['name', 'extension', 'mimeType', 'size', 'storage', 'checksum'],
           properties: {
             size: { bsonType: ['int', 'long'], minimum: 1 },
             storage: { enum: ['embedded', 'chunked'] },
             checksum: { bsonType: 'object', required: ['algorithm', 'value'],
               properties: { algorithm: { enum: ['sha256'] }, value: { bsonType: 'string', pattern: '^[0-9a-f]{64}$' } } } } },
-        createdAt: { bsonType: 'date' } } } } ] },
+        createdAt: { bsonType: 'date' },
+        // --- Truong ban cau truc / phi cau truc do pipeline TV2 ghi (tuy chon, co thi phai dung kieu) ---
+        tags: { bsonType: 'array', items: { bsonType: 'string' } },
+        media: { bsonType: 'object', properties: {
+          durationSec: { bsonType: 'number', minimum: 0 }, width: { bsonType: 'number', minimum: 1 },
+          height: { bsonType: 'number', minimum: 1 }, pages: { bsonType: 'number', minimum: 1 },
+          codec: { bsonType: 'string' } } },
+        content: { bsonType: 'object', properties: {
+          language: { bsonType: 'string' },
+          text: { bsonType: 'string', maxLength: 200000 },          // quy dinh nhom: content.text < 200 KB
+          transcript: { bsonType: 'array', items: { bsonType: 'object', required: ['start', 'end', 'text'],
+            properties: { start: { bsonType: 'number' }, end: { bsonType: 'number' }, text: { bsonType: 'string' } } } } } } } } } ] },
 
   resource_chunks: { $and: [
     prefixOk('_id'), prefixOk('resourceId'),

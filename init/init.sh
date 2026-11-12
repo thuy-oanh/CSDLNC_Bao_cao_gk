@@ -1,6 +1,4 @@
 
-#!/bin/bash
-# Luu file voi dinh dang LF, khong phai CRLF.
 
 set -euo pipefail
 

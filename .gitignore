@@ -2,4 +2,7 @@
 Thumbs.db
 *.tmp
 *.log
-node_modules/
+node_modules/pipeline/.venv/
+**/__pycache__/
+*.pyc
+downloads/

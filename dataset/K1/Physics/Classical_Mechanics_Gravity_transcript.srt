@@ -1,0 +1,627 @@
+1
+00:00:03,480 --> 00:00:05,400
+The motion of objects in space is
+
+2
+00:00:05,400 --> 00:00:07,200
+governed by the universal law of
+
+3
+00:00:07,200 --> 00:00:08,760
+gravity.
+
+4
+00:00:08,760 --> 00:00:11,560
+So, let's consider how this works.
+
+5
+00:00:11,560 --> 00:00:14,000
+We have two objects here.
+
+6
+00:00:14,000 --> 00:00:15,920
+Object one
+
+7
+00:00:15,920 --> 00:00:17,200
+and two.
+
+8
+00:00:17,200 --> 00:00:19,240
+And that could be two planets or two
+
+9
+00:00:19,240 --> 00:00:21,440
+asteroids or
+
+10
+00:00:21,440 --> 00:00:23,800
+um two white dwarfs, black holes,
+
+11
+00:00:23,800 --> 00:00:26,520
+any kind of objects you can imagine.
+
+12
+00:00:26,520 --> 00:00:29,000
+And uh they are mutually attracted by
+
+13
+00:00:29,000 --> 00:00:31,920
+each other due to gravitation. So, we
+
+14
+00:00:31,920 --> 00:00:35,680
+have a gravitational force
+
+15
+00:00:36,040 --> 00:00:38,600
+um and uh
+
+16
+00:00:38,600 --> 00:00:41,480
+we label this as F and this is the force
+
+17
+00:00:41,480 --> 00:00:43,840
+on object one due to the interaction
+
+18
+00:00:43,840 --> 00:00:46,920
+between the bodies one and two.
+
+19
+00:00:46,920 --> 00:00:49,200
+And here we have a force
+
+20
+00:00:49,200 --> 00:00:50,880
+that's uh
+
+21
+00:00:50,880 --> 00:00:52,080
+that that's
+
+22
+00:00:52,080 --> 00:00:54,360
+a force on object two due to the
+
+23
+00:00:54,360 --> 00:00:58,080
+interaction between objects one and two.
+
+24
+00:00:58,080 --> 00:01:01,160
+And uh the objects are separated
+
+25
+00:01:01,160 --> 00:01:05,600
+by a distance R 1 2.
+
+26
+00:01:05,600 --> 00:01:07,840
+Now, we want to derive the universal law
+
+27
+00:01:07,840 --> 00:01:09,840
+of gravitation. How we're going to go
+
+28
+00:01:09,840 --> 00:01:11,560
+about that?
+
+29
+00:01:11,560 --> 00:01:13,960
+Well, Newton figured out a while ago
+
+30
+00:01:13,960 --> 00:01:16,960
+that it is proportional to the masses of
+
+31
+00:01:16,960 --> 00:01:20,280
+objects one and two. So, this one has
+
+32
+00:01:20,280 --> 00:01:23,040
+a mass M2 and this one has
+
+33
+00:01:23,040 --> 00:01:24,520
+one.
+
+34
+00:01:24,520 --> 00:01:26,880
+And it is also proportional to the
+
+35
+00:01:26,880 --> 00:01:29,720
+square of the distance between the two
+
+36
+00:01:29,720 --> 00:01:31,880
+objects.
+
+37
+00:01:31,880 --> 00:01:33,440
+Now, uh we need to do one more
+
+38
+00:01:33,440 --> 00:01:36,080
+consideration to to and then we can
+
+39
+00:01:36,080 --> 00:01:40,120
+derive this. We need to actually um
+
+40
+00:01:40,120 --> 00:01:41,560
+well, first we need to pick some kind of
+
+41
+00:01:41,560 --> 00:01:44,360
+origin from where we are considering
+
+42
+00:01:44,360 --> 00:01:46,720
+uh these two objects to be.
+
+43
+00:01:46,720 --> 00:01:49,680
+And uh this object here goes from the
+
+44
+00:01:49,680 --> 00:01:50,920
+origin
+
+45
+00:01:50,920 --> 00:01:54,240
+to there and we call this R1.
+
+46
+00:01:54,240 --> 00:01:56,840
+And then we have here
+
+47
+00:01:56,840 --> 00:01:59,400
+R2.
+
+48
+00:01:59,400 --> 00:02:01,760
+Which also means
+
+49
+00:02:01,760 --> 00:02:04,480
+that the distance here between object
+
+50
+00:02:04,480 --> 00:02:06,760
+one and two
+
+51
+00:02:06,760 --> 00:02:11,000
+uh is R12.
+
+52
+00:02:11,800 --> 00:02:13,680
+And actually we know from vector
+
+53
+00:02:13,680 --> 00:02:17,080
+decomposition that R12
+
+54
+00:02:17,080 --> 00:02:19,720
+equals R2
+
+55
+00:02:19,720 --> 00:02:21,880
+R1.
+
+56
+00:02:21,880 --> 00:02:23,480
+So, just this
+
+57
+00:02:23,480 --> 00:02:25,880
+um minus this gives us this distance
+
+58
+00:02:25,880 --> 00:02:27,040
+here.
+
+59
+00:02:27,040 --> 00:02:28,360
+Now, um
+
+60
+00:02:28,360 --> 00:02:30,160
+if we want to write down the universal
+
+61
+00:02:30,160 --> 00:02:32,600
+law of gravitation, we also you know,
+
+62
+00:02:32,600 --> 00:02:35,080
+there there is a magnitude component to
+
+63
+00:02:35,080 --> 00:02:38,040
+it and we also need a direction.
+
+64
+00:02:38,040 --> 00:02:40,400
+And uh we haven't yet chosen a
+
+65
+00:02:40,400 --> 00:02:42,360
+coordinate system.
+
+66
+00:02:42,360 --> 00:02:44,880
+We could of course choose our usual way
+
+67
+00:02:44,880 --> 00:02:47,360
+of placing the I hat direction in the X
+
+68
+00:02:47,360 --> 00:02:49,600
+coordinate uh in the X direction and the
+
+69
+00:02:49,600 --> 00:02:52,480
+J hat coordinate in the Y direction.
+
+70
+00:02:52,480 --> 00:02:54,480
+But uh when we deal with the universal
+
+71
+00:02:54,480 --> 00:02:56,120
+law of gravitation, it's actually better
+
+72
+00:02:56,120 --> 00:02:58,040
+to adopt a slightly different coordinate
+
+73
+00:02:58,040 --> 00:03:00,600
+system. Everything in space usually
+
+74
+00:03:00,600 --> 00:03:02,840
+orbits one another. So, it's much better
+
+75
+00:03:02,840 --> 00:03:05,200
+to think in a radial direction rather
+
+76
+00:03:05,200 --> 00:03:06,560
+than just um
+
+77
+00:03:06,560 --> 00:03:09,000
+uh normal Cartesian coordinates.
+
+78
+00:03:09,000 --> 00:03:10,760
+And so, in this case we're going to
+
+79
+00:03:10,760 --> 00:03:13,120
+choose an R hat vector which gives us
+
+80
+00:03:13,120 --> 00:03:15,400
+the radial direction and we're going to
+
+81
+00:03:15,400 --> 00:03:17,520
+do this here.
+
+82
+00:03:17,520 --> 00:03:19,480
+So, this is going to be our R hat
+
+83
+00:03:19,480 --> 00:03:22,440
+direction on object um
+
+84
+00:03:22,440 --> 00:03:25,040
+two.
+
+85
+00:03:25,040 --> 00:03:28,880
+And here we have an R hat direction
+
+86
+00:03:28,880 --> 00:03:31,560
+uh two one.
+
+87
+00:03:31,560 --> 00:03:33,120
+And uh
+
+88
+00:03:33,120 --> 00:03:36,160
+we're going to come back to to the R hat
+
+89
+00:03:36,160 --> 00:03:39,320
+uh unit vectors later. For now, we can
+
+90
+00:03:39,320 --> 00:03:41,240
+just write here quickly down the
+
+91
+00:03:41,240 --> 00:03:44,640
+definition for um a unit vector.
+
+92
+00:03:44,640 --> 00:03:47,760
+Uh so, our hat one two is of course the
+
+93
+00:03:47,760 --> 00:03:50,720
+vector itself R12
+
+94
+00:03:50,720 --> 00:03:54,040
+divided over the magnitude uh of the
+
+95
+00:03:54,040 --> 00:03:57,200
+vector. I can write it like this.
+
+96
+00:03:57,200 --> 00:04:01,200
+And uh now we can we can write down the
+
+97
+00:04:01,200 --> 00:04:04,600
+the the gravitational law. So,
+
+98
+00:04:04,600 --> 00:04:07,080
+uh the force on object we're going to
+
+99
+00:04:07,080 --> 00:04:09,800
+look at object two. Uh the force on
+
+100
+00:04:09,800 --> 00:04:12,000
+object two due to the interaction
+
+101
+00:04:12,000 --> 00:04:14,880
+between objects one and two
+
+102
+00:04:14,880 --> 00:04:17,440
+is uh proportional
+
+103
+00:04:17,440 --> 00:04:19,840
+to the mass
+
+104
+00:04:19,840 --> 00:04:21,920
+of the two objects.
+
+105
+00:04:21,920 --> 00:04:23,400
+We already said that in the beginning
+
+106
+00:04:23,400 --> 00:04:25,440
+and the square
+
+107
+00:04:25,440 --> 00:04:27,160
+of uh
+
+108
+00:04:27,160 --> 00:04:30,440
+the distance between the two objects.
+
+109
+00:04:30,440 --> 00:04:33,600
+But what about the direction?
+
+110
+00:04:33,600 --> 00:04:35,960
+The direction here we were looking at
+
+111
+00:04:35,960 --> 00:04:39,280
+object two, we placed our R hat
+
+112
+00:04:39,280 --> 00:04:42,080
+uh unit vector to point down.
+
+113
+00:04:42,080 --> 00:04:44,120
+But the force is going in the opposite
+
+114
+00:04:44,120 --> 00:04:47,240
+direction. So, in the negative R12 hat
+
+115
+00:04:47,240 --> 00:04:50,880
+direction. So, we have to add a minus
+
+116
+00:04:50,880 --> 00:04:55,200
+here and then R12 R hat.
+
+117
+00:04:55,200 --> 00:04:56,840
+And um
+
+118
+00:04:56,840 --> 00:04:58,440
+as it is the case with most of these
+
+119
+00:04:58,440 --> 00:05:00,600
+laws, there's a proportionality
+
+120
+00:05:00,600 --> 00:05:03,520
+constant and Newton called this capital
+
+121
+00:05:03,520 --> 00:05:05,080
+G.
+
+122
+00:05:05,080 --> 00:05:08,840
+And G as we know today from experiment
+
+123
+00:05:08,840 --> 00:05:12,280
+is um 6.67
+
+124
+00:05:12,280 --> 00:05:15,120
+10 to the minus 11 and then in terms of
+
+125
+00:05:15,120 --> 00:05:18,160
+units, we have Newton.
+
+126
+00:05:18,160 --> 00:05:20,840
+Force goes in Newton. We have um
+
+127
+00:05:20,840 --> 00:05:26,720
+uh um mass uh this is kilogram squared.
+
+128
+00:05:27,680 --> 00:05:32,280
+And we have uh meter squared.
+
+129
+00:05:32,720 --> 00:05:34,880
+So, that's um
+
+130
+00:05:34,880 --> 00:05:37,160
+that are the units and if you plug those
+
+131
+00:05:37,160 --> 00:05:39,200
+in, then the units of the whole equation
+
+132
+00:05:39,200 --> 00:05:41,320
+will work out. So, let's quickly
+
+133
+00:05:41,320 --> 00:05:43,680
+consider the force in object one to see
+
+134
+00:05:43,680 --> 00:05:46,440
+what's happening over there. So, we have
+
+135
+00:05:46,440 --> 00:05:49,520
+F um 2 1
+
+136
+00:05:49,520 --> 00:05:54,320
+equals minus G M1 M2
+
+137
+00:05:54,320 --> 00:05:58,160
+over R12 squared. And in terms of the
+
+138
+00:05:58,160 --> 00:06:02,440
+unit vector, we now have R um 2 1 hat
+
+139
+00:06:02,440 --> 00:06:05,640
+here going. So, again, this minus goes
+
+140
+00:06:05,640 --> 00:06:07,760
+with this unit vector and that one is
+
+141
+00:06:07,760 --> 00:06:09,560
+pointing here in the opposite direction
+
+142
+00:06:09,560 --> 00:06:11,360
+than our force.
+
+143
+00:06:11,360 --> 00:06:13,600
+Uh so, that's all good, but what we see
+
+144
+00:06:13,600 --> 00:06:15,440
+from this one here
+
+145
+00:06:15,440 --> 00:06:18,040
+um and actually from our diagram already
+
+146
+00:06:18,040 --> 00:06:21,160
+that R12
+
+147
+00:06:21,160 --> 00:06:23,720
+uh equals minus
+
+148
+00:06:23,720 --> 00:06:26,280
+R21.
+
+149
+00:06:26,280 --> 00:06:29,760
+And so, we uh see from this then
+
+150
+00:06:29,760 --> 00:06:33,680
+that uh actually Newton's third law
+
+151
+00:06:33,680 --> 00:06:36,160
+every action has an equal and opposite
+
+152
+00:06:36,160 --> 00:06:39,480
+reaction is true
+
+153
+00:06:39,480 --> 00:06:42,600
+for this um little uh setup here as
+
+154
+00:06:42,600 --> 00:06:43,720
+well.
+
+155
+00:06:43,720 --> 00:06:47,200
+Um because the forces are um of of
+
+156
+00:06:47,200 --> 00:06:49,240
+opposite direction and of equal
+
+157
+00:06:49,240 --> 00:06:52,080
+magnitude.
